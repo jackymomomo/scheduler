@@ -1,5 +1,5 @@
 import React from "react";
-import "components/DayListItem.scss";
+import "components/dayListItem.scss";
 const classNames = require('classnames');
 
 const formatSpots = spots => {
