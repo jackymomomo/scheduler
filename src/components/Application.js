@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "components/Application.scss";
 import DayList from "./DayList";
 import InterviewerList from "./InterviewerList";
 import Appointment from "components/Appointment";
-
+import axios from 'axios';
 const appointments = [
   {
     id: 1,
@@ -38,36 +38,32 @@ const appointments = [
     time: "12am",
   }
 ];
-
-const days = [
-  {
-    id: 1,
-    name: "Monday",
-    spots: 2,
-  },
-  {
-    id: 2,
-    name: "Tuesday",
-    spots: 5,
-  },
-  {
-    id: 3,
-    name: "Wednesday",
-    spots: 0,
-  },
-];
-
 const appointment = appointments.map((appt) => {
-  console.log(appt, "appt")
   return (
-<Appointment key={appt.id} {...appt} />
-  )
+      <Appointment key={appt.id} {...appt} />
+    )
 });
-console.log(appointment)
 
 export default function Application(props) {
-  const [day, setDay] = useState('Monday');
+  // const [day, setDay] = useState([]);
+  // const [dayData, setDayData] = useState([]);
+  const [state, setState] = useState({
+    day: "Monday",
+    days: [],
+    appointments: {}
+  })
 
+  const setDay = day => setState({...state, day});
+  const setDays = days => setState(prev => ({ ...prev, days }));
+
+
+  useEffect(() => {
+    axios.get('http://localhost:8001/api/days')
+      .then(res => {
+        setDays(res.data)
+      })
+      .catch(err => console.log(err))
+  }, [])
   return (
     <main className="layout">
       <section className="sidebar">
@@ -79,8 +75,8 @@ export default function Application(props) {
         <hr className="sidebar__separator sidebar--centered" />
         <nav className="sidebar__menu">
         <DayList
-          days={days}
-          day={day}
+          days={state.days}
+          day={state.day}
           setDay={setDay}
         />
         </nav>
@@ -92,16 +88,6 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointment} 
-        {/* {appointments.map(appointment => {
-          return (
-          <Appointment 
-            key={appointment.id}
-            id={appointment.id}
-            time={appointment.time}
-            interview={appointment.interview}
-          /> ) */}
-
-
         <Appointment key="last" time="5pm" />
       </section>
     </main>
