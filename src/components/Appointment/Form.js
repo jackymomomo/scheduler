@@ -4,22 +4,20 @@ import InterviewerList from 'components/InterviewerList';
 import { action } from '@storybook/addon-actions/dist/preview';
 
 export default function Form(props) {
+
   //For keeping track of the name
   const [currentName, setName] = useState(props.name || "");
   const [currentInterviewer, setInterviewer] = useState(props.value || null)
-
   //Helper function to clear all fields
   const reset = () => {
     setName("")
     setInterviewer('null')
   }
-
   function cancel () {
     // props.onCancel;
     reset();
     props.onCancel()
   }
-
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
@@ -36,7 +34,6 @@ export default function Form(props) {
               This must be a controlled component
             */
           />
-
         </form>
         <InterviewerList interviewers={props.interviewers} value={currentInterviewer} onChange={(event) => setInterviewer(event)} />
       </section>
