@@ -9,7 +9,7 @@ import Confirm from 'components/Appointment/Confirm';
 import Error from 'components/Appointment/Error';
 
 import 'components/Appointment/styles.scss';
-import useVisualMode from '../../hooks/useVisualMode';
+import useVisualMode from 'hooks/useVisualMode';
 
 export default function Appointment(props) {
 
@@ -28,11 +28,11 @@ export default function Appointment(props) {
   );
 
   useEffect(() => {
-
+    
     if (props.interview && mode === EMPTY) {
       transition(SHOW);
     }
-
+    
     if (!props.interview && mode === SHOW) {
       transition(EMPTY);
     }
@@ -40,7 +40,7 @@ export default function Appointment(props) {
   }, [mode, transition, props.interview])
 
   function save(name, interviewer) {
-
+    
     if (name && interviewer) {
       transition(SAVING);
 
@@ -70,7 +70,7 @@ export default function Appointment(props) {
   function edit() {
     transition(EDIT);
   }
-
+  
   return (
 
     <article className="appointment" data-testid="appointment">

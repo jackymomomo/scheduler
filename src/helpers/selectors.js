@@ -3,6 +3,7 @@ const matchIds = (appointments, ids) => {
   const matched = ids.map(id => appointments[id]);
   return matched;
 }
+
 //Go through a state array with a days object and an appointments object
 //Match the appointments given in the days object to those in the appointments object
 function getAppointmentsForDay(state, day) {
