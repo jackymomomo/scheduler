@@ -9,14 +9,14 @@ To ensure the quality of the project, Test Driven Development (TDD) practices ha
 
 ## project features 
 
-. Appointment days (Monday to Friday) are displayed and color-coordinated based on availability.
-. The days show the number of slots available as a snapshot of the week.
-. Users can switch between days and view detailed information.
-. Booked and available slots are clearly differentiated.
-. Users can book interviews by typing in a student name and selecting an interviewer from a list.
-. Users can modify existing interviews by pressing the edit icon.
-. Users can cancel existing interviews, and a pop-up message will confirm the action before permanently deleting the interview.
-. Days display currently remaining spots and capture updates after each modification.
+- Appointment days (Monday to Friday) are displayed and color-coordinated based on availability.
+-  The days show the number of slots available as a snapshot of the week.
+- Users can switch between days and view detailed information.
+- Booked and available slots are clearly differentiated.
+- Users can book interviews by typing in a student name and selecting an interviewer from a list.
+- Users can modify existing interviews by pressing the edit icon.
+- Users can cancel existing interviews, and a pop-up message will confirm the action before permanently deleting the interview.
+- Days display currently remaining spots and capture updates after each modification.
 
 ## Screen Shots
 
