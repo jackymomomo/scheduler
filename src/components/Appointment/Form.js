@@ -28,7 +28,7 @@ export default function Form(props) {
             type="text"        
             onChange={(event) => setName(event.target.value)}            
             value={currentName}
-            placeholder={currentName ? currentName : "Please enter your name"}
+            placeholder={currentName ? currentName : "Enter Student Name"}
 
             /*
               This must be a controlled component
