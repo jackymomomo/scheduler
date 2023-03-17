@@ -1,5 +1,5 @@
 import React from "react";
-import "components/dayListItem.scss";
+import "components/DayListItem.scss";
 const classNames = require('classnames');
 
 const formatSpots = spots => {
@@ -26,6 +26,7 @@ export default function DayListItem(props) {
     <li 
       className={dayClass}
       onClick={() => props.setDay(props.name)}
+      data-testid="day"
     >
       <h2 className="text--regular">{props.name}</h2>
       <h3 className="text--light">{availabilityMessage}</h3>

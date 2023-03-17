@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import Button from 'components/Button';
 import InterviewerList from 'components/InterviewerList';
+  // eslint-disable-next-line
 import { action } from '@storybook/addon-actions/dist/preview';
+
 export default function Form(props) {
+
   //For keeping track of the name
   const [currentName, setName] = useState(props.name || "");
   const [currentInterviewer, setInterviewer] = useState(props.value || null)
   const [error, setError] = useState("");
+
   //Helper function to clear all fields
   const reset = () => {
     setName("")
@@ -18,11 +22,17 @@ export default function Form(props) {
     reset();
     props.onCancel()
   }
+
   function validate() {
     if (currentName === "") {
-      setError("Student name cannot be blank")
+      setError("student name cannot be blank")
       return;
     }
+    // added clause to check for interwiever pick
+    if (currentInterviewer === null) {
+      setError("Please pick an interviewer")
+      return;
+    } 
     setError("")
     props.onSave(currentName, currentInterviewer);
   }
@@ -30,7 +40,7 @@ export default function Form(props) {
   return (
     <main className="appointment__card appointment__card--create">
       <section className="appointment__card-left">
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={event => event.preventDefault()}>
           <input
             className="appointment__create-input text--semi-bold"
             name={props.name}
